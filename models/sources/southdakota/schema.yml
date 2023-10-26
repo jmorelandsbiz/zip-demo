@@ -1,0 +1,42 @@
+
+version: 2
+groups:
+  - name: sd_zip_codes
+    owner:
+      name: South Dakota Zip Code Team
+      email: zips@phdata.io
+
+models:
+    - name: sd_zip
+      group: sd_zip_codes
+      access: public
+    - name: pre_sd_zip
+      group: sd_zip_codes
+      access: protected
+      config:
+        contract:
+          enforced: true
+      description: "South Dakota Zip Codes"
+      columns:
+        - name: zip_id
+          data_type: number
+          constraints:
+            - type: not_null
+            - type: unique
+              warn_unenforced: false
+          tests:
+            - unique
+        - name: zip
+          data_type: varchar
+          constraints:
+            - type: not_null
+            - type: unique
+              warn_unenforced: false
+          tests:
+            - unique
+        - name: SourceSystem
+          data_type: varchar
+        - name: City
+          data_type: varchar
+        - name: State
+          data_type: varchar

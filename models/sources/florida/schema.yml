@@ -1,0 +1,42 @@
+
+version: 2
+groups:
+  - name: fl_zip_codes
+    owner:
+      name: Florida Zip Code Team
+      email: zips@phdata.io
+
+models:
+    - name: fl_zip
+      group: fl_zip_codes
+      access: public
+    - name: pre_fl_zip
+      group: fl_zip_codes
+      access: protected
+      config:
+        contract:
+          enforced: true
+      description: "Florida Zip Codes"
+      columns:
+        - name: zip_id
+          data_type: number
+          constraints:
+            - type: not_null
+            - type: unique
+              warn_unenforced: false
+          tests:
+            - unique
+        - name: zip
+          data_type: varchar
+          constraints:
+            - type: not_null
+            - type: unique
+              warn_unenforced: false
+          tests:
+            - unique
+        - name: SourceSystem
+          data_type: varchar
+        - name: City
+          data_type: varchar
+        - name: State
+          data_type: varchar
